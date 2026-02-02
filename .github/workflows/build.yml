@@ -13,10 +13,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: ./MeuSystem
-
     steps:
       - uses: actions/checkout@v4
 
@@ -26,13 +22,13 @@ jobs:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
       - name: Restore
-        run: dotnet restore MeuSystem.sln
+        run: dotnet restore
 
       - name: Build
-        run: dotnet build MeuSystem.sln --configuration Release --no-restore
+        run: dotnet build  --configuration Release --no-restore
 
       - name: Test
-        run: dotnet test MeuSystem.sln --configuration Release --no-restore --no-build
+        run: dotnet test  --configuration Release --no-restore --no-build
 
       - name: Publish
-        run: dotnet publish MeuSystem.sln --configuration Release --no-restore --no-build
+        run: dotnet publish  --configuration Release --no-restore --no-build
